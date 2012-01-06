@@ -8,11 +8,15 @@
   },
   "main": "index.js",
   "bin": {
-      "task" : "./bin/task"
+      "task": "./bin/task"
   },
   "engines": {
     "node": "~0.6.6"
   },
-  "dependencies": {},
+  "dependencies": {
+    "colors": "~0.6.0",
+    "optimist": "~0.3.1",
+    "q": "~0.8.0"
+  },
   "devDependencies": {}
 }
