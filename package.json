@@ -2,7 +2,7 @@
   "author": "Christopher Joel <chris@scriptolo.gy> (http://scriptolo.gy)",
   "name": "taskmaster",
   "description": "Taskmaster is a simple project task runner.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "url": ""
   },
