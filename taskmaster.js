@@ -78,19 +78,33 @@ fs.readdir(
                                     function(reason) {
 
                                         error(taskName, "There was an error while performing the task. " + (reason ? reason.toString() : ''));
+                                        
+                                        if(typeof reason.stack === 'string') {
+
+                                            reason.stack.split(/\r\n|\r|\n/g).forEach(
+                                                function(line) {
+
+                                                    error(taskName, line);
+                                                }
+                                            );
+                                        }
+
                                         showUsage();
+                                        process.exit(1);
                                     }
                                 );
                             } catch(e) {
 
                                 error(taskName, "Task exited prematurely during execution. " + e.message);
                                 showUsage();
+                                process.exit(1);
                             }
                         }
 
                     } catch(e) {
 
                         error(taskName, "There was an error loading the task. " + e.message);
+                        process.exit(1);
                     }
                 },
                 listAvailableTasks = function() {
@@ -120,6 +134,8 @@ fs.readdir(
                     error("You must specify a task to run.");
 
                 listAvailableTasks();
+
+                process.exit(Number(!askedForHelp));
             } else
                 runTask();
         }
